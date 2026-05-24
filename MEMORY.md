@@ -66,6 +66,13 @@
 
 ---
 
+## Установка и настройка
+
+- **2026-05-24** — Установлена архитектура Агента из `Ntmib/jarvis-architect`. Заполнены 8 DNA-файлов (интервью 10 вопросов). Репозиторий: `github.com/slavinbiz/jarvis`.
+- **2026-05-24** — Установлены скиллы: `discovery-interview` (parcadei/Continuous-Claude-v3), `content-creator`, `fullstack-developer` (Shubhamsaboo/awesome-llm-apps), `frontend-design` (anthropics/claude-code). Активирован плагин `superpowers`.
+
+---
+
 ## Ссылки на knowledge/
 
 > Карта справочников из папки `knowledge/`. Когда добавите туда новый файл — дайте здесь ссылку и одну строку «когда читать».

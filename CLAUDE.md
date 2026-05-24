@@ -231,6 +231,42 @@
 
 ---
 
+## Моя команда
+
+### Скиллы (.claude/skills/)
+
+| Скилл | Что делает |
+|---|---|
+| `discovery-interview` | Глубокое интервью — превращает идею в детальное ТЗ |
+| `content-creator` | Контент для блогов, соцсетей, маркетинга |
+| `frontend-design` | Продакшн-интерфейсы, без шаблонных AI-решений |
+| `fullstack-developer` | React, Node.js, базы данных, full-stack |
+| `reminder` | Напоминания и регулярные задачи |
+| `server-setup` | Установка Агента на VPS |
+
+### Плагин Superpowers
+
+Активирован в `.claude/settings.json`. Добавляет 14 скиллов:
+
+| Скилл | Когда использовать |
+|---|---|
+| `using-superpowers` | При старте любого разговора |
+| `brainstorming` | Перед творческой или технической задачей |
+| `writing-plans` | Есть ТЗ — нужен план до кода |
+| `executing-plans` | Выполнение готового плана с контрольными точками |
+| `subagent-driven-development` | Независимые задачи в одной сессии |
+| `dispatching-parallel-agents` | 2+ независимых задачи параллельно |
+| `systematic-debugging` | Любой баг или неожиданное поведение |
+| `test-driven-development` | Фича или фикс — сначала тесты |
+| `requesting-code-review` | Перед мержем, после крупных изменений |
+| `receiving-code-review` | Получил ревью — перед правками |
+| `finishing-a-development-branch` | Завершение ветки — мерж, PR или очистка |
+| `verification-before-completion` | Перед тем как сказать «готово» |
+| `using-git-worktrees` | Изоляция фичи от текущего workspace |
+| `writing-skills` | Создание и редактирование новых скиллов |
+
+---
+
 ## Что НЕ удалять без явной просьбы
 
 - `SOUL.md`
