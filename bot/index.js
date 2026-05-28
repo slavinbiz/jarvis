@@ -208,6 +208,14 @@ async function sendToOwner(text) {
 // Priority: OWNER_ID env var > owner.json file > auto-lock on first /start
 let _ownerId = process.env.OWNER_ID || null;
 
+// Optional whitelist: ALLOWED_USERS=id1,id2,id3 in .env
+const _allowedIds = new Set(
+  (process.env.ALLOWED_USERS || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+);
+
 function loadOwner() {
   if (_ownerId) return; // env var takes priority
   try {
@@ -232,8 +240,10 @@ function saveOwner(ctx) {
 loadOwner();
 
 function isOwner(ctx) {
-  if (!_ownerId) return false; // No owner yet — only /start can set it
-  return String(ctx.from?.id) === String(_ownerId);
+  const userId = String(ctx.from?.id);
+  if (_ownerId && userId === String(_ownerId)) return true;
+  if (_allowedIds.size > 0 && _allowedIds.has(userId)) return true;
+  return false;
 }
 
 // ─── SPEND TRACKING ─────────────────────────────────────────────────────────
@@ -1603,6 +1613,23 @@ function spendLimitKeyboard() {
 
 const bot = new Bot(BOT_TOKEN);
 bot.api.config.use(autoRetry());
+
+// ─── GLOBAL AUTH MIDDLEWARE ─────────────────────────────────────────────────
+bot.use(async (ctx, next) => {
+  if (isOwner(ctx)) return next();
+
+  // Allow first-ever /start when no owner is set yet (auto-lock on new install)
+  const isFirstStart = !_ownerId && !process.env.OWNER_ID && _allowedIds.size === 0
+    && ctx.message?.text?.startsWith("/start");
+  if (isFirstStart) return next();
+
+  // Reject everyone else
+  if (ctx.message) {
+    await ctx.reply("⛔ Нет доступа.").catch(() => {});
+  } else if (ctx.callbackQuery) {
+    await ctx.answerCallbackQuery("Нет доступа").catch(() => {});
+  }
+});
 
 // Env callbacks (модуль secrets-menu.js — только callbacks, не /settings)
 registerSecretsHandlers(bot, isOwner);
