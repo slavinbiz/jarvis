@@ -480,22 +480,6 @@ class StatusMessage {
       }
     }, 4000);
 
-    this.animationInterval = setInterval(async () => {
-      if (this.stopped || this.streamingText || this._isBreakerActive()) return;
-      this.phraseIndex = (this.phraseIndex + 1) % THINKING_PHRASES.length;
-      const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
-      try {
-        await this.ctx.api.editMessageText(
-          this.chatId, this.messageId,
-          formatThinkingPhrase(this.phraseIndex, elapsed)
-        );
-      } catch (e) {
-        if (e?.error_code === 429) {
-          this._activateBreaker(e?.parameters?.retry_after || 30);
-        }
-      }
-    }, 2000);
-
     this.ctx.api.sendChatAction(this.chatId, "typing").catch(() => {});
   }
 
@@ -503,11 +487,9 @@ class StatusMessage {
     if (this.stopped) return;
     this.streamingText = text;
     if (this._isBreakerActive()) return;
-    const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
     const display = text.length > 3500 ? "…" + text.slice(-3500) : text;
-    const indicator = `\n\n⏳ ${elapsed}с`;
     try {
-      await this.ctx.api.editMessageText(this.chatId, this.messageId, display + indicator);
+      await this.ctx.api.editMessageText(this.chatId, this.messageId, display);
     } catch (e) {
       if (e?.error_code === 429) {
         this._activateBreaker(e?.parameters?.retry_after || 30);
