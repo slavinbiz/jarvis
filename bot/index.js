@@ -1905,7 +1905,7 @@ bot.callbackQuery("confirm_continue", async (ctx) => {
   const userId = String(ctx.from.id);
   const sessionId = sessions.get(userId) || null;
 
-  const thinkingMsg = await ctx.reply(formatThinkingPhrase(0, 0));
+  const thinkingMsg = await ctx.reply("⏳");
   const status = new StatusMessage(ctx, thinkingMsg.message_id);
   _activeStatus = status;
   status.start();
@@ -1990,7 +1990,7 @@ bot.on("message:text", async (ctx) => {
 async function handleTextMessage(ctx, text) {
   const userId = String(ctx.from.id);
 
-  const thinkingMsg = await ctx.reply(formatThinkingPhrase(0, 0));
+  const thinkingMsg = await ctx.reply("⏳");
   const status = new StatusMessage(ctx, thinkingMsg.message_id);
   _activeStatus = status;
   status.start();
