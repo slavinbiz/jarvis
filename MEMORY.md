@@ -78,7 +78,11 @@
 
 > Карта справочников из папки `knowledge/`. Когда добавите туда новый файл — дайте здесь ссылку и одну строку «когда читать».
 
-*Пока пусто.*
+- [n8n-telegram-bot-template.md](knowledge/n8n-telegram-bot-template.md) — шаблон n8n Telegram-бота с мультиагентностью (Gemini + Memory + Tool)
+- [n8n-skazochnik-template.md](knowledge/n8n-skazochnik-template.md) — генератор длинного контента по главам с публикацией на Telegraph, паттерн staticData + splitInBatches
+- [n8n-article-generator-template.md](knowledge/n8n-article-generator-template.md) — двухшаговый диалог (тема → кол-во) + статьи с иллюстрациями через Polza API
+- [n8n-negotiator-template.md](knowledge/n8n-negotiator-template.md) — сессионный roleplay-бот, паттерн сброса памяти по /start
+- [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026: роли агентов, worktrees, CI, MCP
 
 ---
 
