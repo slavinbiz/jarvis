@@ -20,17 +20,16 @@
 
 ## Активные проекты
 
-1. Сайт — в разработке
-2. Мини-апп — в разработке
-3. Крипто-бот — тестируется
+1. **Сайт** — лендинг сантехника, репо: `github.com/slavinbiz/viacheslav-digital`, стек: Supabase + Telegram-бот
+2. **Мини-апп** — TMA (Telegram Mini App), репо: `github.com/slavinbiz/viacheslav-tma`, развёрнут на Vercel
+3. **Lead Machine** — outreach-бот, репо: `github.com/slavinbiz/lead-machine`, ждёт деплоя на VPS
 
 ---
 
 ## Инфраструктура
 
-> Сюда дописывайте: серверы (VPS, IP, доступы), домены, базы данных, ключевые шаблоны deploy-команд. Чтобы Агент мог работать с инфраструктурой не переспрашивая.
-
-*Пока пусто. Появится когда заведёте свой сервер или домен.*
+- **Beget Latvia** — 91.193.25.237 — Jarvis-бот (этот сервер). Оплата ~17-го, напоминание 12-го.
+- **TimeWeb** — 64.188.57.249 — крипто-бот (Lead Machine). Оплата ~16-го, напоминание 11-го.
 
 ---
 
@@ -72,6 +71,15 @@
 - **2026-05-24** — Установлены скиллы: `discovery-interview` (parcadei/Continuous-Claude-v3), `content-creator`, `fullstack-developer` (Shubhamsaboo/awesome-llm-apps), `frontend-design` (anthropics/claude-code). Активирован плагин `superpowers`.
 
 ---
+
+## Google Calendar
+
+- **Аккаунт:** slavin507@gmail.com
+- **4 календаря:** slavin507@gmail.com, Семейная группа, Агентство «Голосовые решения», Todoist
+- **Токен:** ключ `google-calendar|579e90e4bdd6e384` в `/home/agent/.claude/.credentials.json`
+- **Refresh:** `client_id=950211183011-relma4bf08ipm9git59iigr9fmj9b64e.apps.googleusercontent.com` + `clientSecret` из `mcpOAuthClientConfig[579e90e4bdd6e384]` → POST `https://oauth2.googleapis.com/token`
+- **События:** прямой запрос к Google Calendar REST API (MCP tools пока нестабильны на VPS)
+- **Токен истекает** каждые ~60 мин — обновлять через refresh в начале каждой сессии
 
 ## Ссылки на knowledge/
 

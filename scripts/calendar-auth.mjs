@@ -35,6 +35,7 @@ authUrl.searchParams.set('code_challenge', codeChallenge);
 authUrl.searchParams.set('code_challenge_method', 'S256');
 authUrl.searchParams.set('access_type', 'offline');
 authUrl.searchParams.set('prompt', 'consent');
+authUrl.searchParams.set('resource', 'https://calendarmcp.googleapis.com/mcp');
 
 console.log('\n=== ОТКРОЙ ЭТУ ССЫЛКУ В БРАУЗЕРЕ ===\n');
 console.log(authUrl.toString());
