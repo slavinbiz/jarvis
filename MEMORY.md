@@ -12,32 +12,44 @@
 
 ## Контакты и аккаунты
 
-> Дописывайте по мере появления. Telegram, GitHub, email, ключевые аккаунты сервисов.
-
 *Пока пусто.*
 
 ---
 
 ## Активные проекты
 
-1. **Сайт** — лендинг сантехника, репо: `github.com/slavinbiz/viacheslav-digital`, стек: Supabase + Telegram-бот
-2. **Мини-апп** — TMA (Telegram Mini App), репо: `github.com/slavinbiz/viacheslav-tma`, развёрнут на Vercel
-3. **Lead Machine** — outreach-бот, репо: `github.com/slavinbiz/lead-machine`, ждёт деплоя на VPS
+1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
+2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
+3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\`
+4. **Lead Machine** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на Beget. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
 
 ---
 
 ## Инфраструктура
 
 - **Beget Latvia** — 91.193.25.237 — Jarvis-бот (этот сервер). Оплата ~17-го, напоминание 12-го.
-- **TimeWeb** — 64.188.57.249 — крипто-бот (Lead Machine). Оплата ~16-го, напоминание 11-го.
+- **TimeWeb** — 64.188.57.249 — крипто-бот Pamp-Damp. Оплата ~16-го, напоминание 11-го.
+- **Vercel** — мини-апп `viacheslav-tma.vercel.app`
+
+## Пути к проектам на компьютере
+
+| Проект | Путь |
+|--------|------|
+| Jarvis | `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\jarvis` |
+| Сайт | `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project` |
+| Мини-апп | `C:\Users\User\Documents\viacheslav-tma` |
+| Крипто-бот | `C:\crypto_bot\` |
+| Lead Machine | `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine` |
 
 ---
 
 ## Стек и инструменты
 
-> Дописывайте по мере выбора: что используете для frontend, backend, AI, deploy, дизайна. Локальные утилиты на компьютере (например yt-dlp, ffmpeg) — тоже сюда.
-
-*Пока пусто. Появится по мере появления конкретного стека.*
+- **Frontend:** HTML + Tailwind CDN (один файл) — сайт и мини-апп
+- **Backend/боты:** Python (крипто-бот, Lead Machine), Node.js/Grammy (Jarvis-бот)
+- **AI:** Kimi 2.6 via OpenRouter (Lead Machine), Gemini via Polza API (n8n боты)
+- **БД:** Supabase (сайт), PostgreSQL + Redis (Lead Machine)
+- **Telegram API:** Binance Public API + WebSocket (крипто-бот), Telethon (Lead Machine)
 
 ---
 
@@ -52,14 +64,10 @@
   - Повторять вопрос перед ответом
   - «Если нужна помощь — обращайтесь» и подобные штампы
   - Размытые «может быть, возможно» — если не уверен, скажи прямо
-  - Выдумывать факты или давать непроверенную информацию
-  - Уклоняться от «не знаю» — если не знаешь, скажи прямо
 
 ---
 
 ## Ключевые решения
-
-> Решения, которые приняты один раз и не обсуждаются повторно. Например: «работаем только по предоплате», «программу лояльности не делаем в этом квартале», «фронтенд только на React». Чтобы каждую неделю не возвращаться к одному и тому же.
 
 *Пока пусто. Появится по мере работы.*
 
@@ -67,8 +75,8 @@
 
 ## Установка и настройка
 
-- **2026-05-24** — Установлена архитектура Агента из `Ntmib/jarvis-architect`. Заполнены 8 DNA-файлов (интервью 10 вопросов). Репозиторий: `github.com/slavinbiz/jarvis`.
-- **2026-05-24** — Установлены скиллы: `discovery-interview` (parcadei/Continuous-Claude-v3), `content-creator`, `fullstack-developer` (Shubhamsaboo/awesome-llm-apps), `frontend-design` (anthropics/claude-code). Активирован плагин `superpowers`.
+- **2026-05-24** — Установлена архитектура Агента из `Ntmib/jarvis-architect`. Репозиторий: `github.com/slavinbiz/jarvis`.
+- **2026-05-24** — Установлены скиллы: `discovery-interview`, `content-creator`, `fullstack-developer`, `frontend-design`. Активирован плагин `superpowers`.
 
 ---
 
@@ -83,17 +91,19 @@
 
 ## Ссылки на knowledge/
 
-> Карта справочников из папки `knowledge/`. Когда добавите туда новый файл — дайте здесь ссылку и одну строку «когда читать».
-
-*Пока пусто.*
+- [n8n-telegram-bot-template.md](knowledge/n8n-telegram-bot-template.md) — шаблон n8n Telegram-бота с мультиагентностью
+- [n8n-skazochnik-template.md](knowledge/n8n-skazochnik-template.md) — генератор длинного контента по главам
+- [n8n-article-generator-template.md](knowledge/n8n-article-generator-template.md) — двухшаговый диалог + статьи с иллюстрациями
+- [n8n-negotiator-template.md](knowledge/n8n-negotiator-template.md) — сессионный roleplay-бот
+- [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026
+- [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты
 
 ---
 
 ## Правила работы с этим файлом (для Агента)
 
 - **Дописывай в конец нужного раздела**, не переписывай файл целиком.
-- **Файл ≤ 200 строк.** Если разрастается — консолидируй: удали устаревшее, объедини дубликаты, длинные блоки выноси в отдельный файл `knowledge/`.
-- **Дневные заметки** идут в `memory/YYYY-MM-DD.md`, не сюда. Здесь только то, что пригодится через месяц.
-- **Большие справочники** идут в `knowledge/`, не сюда. Здесь только короткая ссылка.
-- **Перед каждой сессией** — перечитай этот файл. Без него ты не Агент Вячеслава, а обычный чат.
-- **Если узнал постоянный факт о человеке** (новый проект, новая инфраструктура, изменение предпочтения) — сразу зафиксируй в нужном разделе.
+- **Файл ≤ 200 строк.** Если разрастается — консолидируй.
+- **Дневные заметки** идут в `memory/YYYY-MM-DD.md`, не сюда.
+- **Большие справочники** идут в `knowledge/`, не сюда.
+- **Перед каждой сессией** — перечитай этот файл.
