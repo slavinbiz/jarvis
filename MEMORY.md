@@ -29,17 +29,28 @@
 
 ## Инфраструктура
 
-> Сюда дописывайте: серверы (VPS, IP, доступы), домены, базы данных, ключевые шаблоны deploy-команд. Чтобы Агент мог работать с инфраструктурой не переспрашивая.
+- **Серверы:**
+  - TimeWeb Cloud — Ubuntu 22.04, IP `64.188.57.249`, RAM 1GB+swap — крипто-бот Pamp-Damp
+  - VPS Beget Latvia — `91.193.25.237` — Jarvis-бот + будущий деплой Lead Machine
+- **Деплой:** Vercel — мини-апп `viacheslav-tma.vercel.app`
 
-*Пока пусто. Появится когда заведёте свой сервер или домен.*
+## Пути к проектам на компьютере
 
----
+| Проект | Путь |
+|--------|------|
+| Jarvis (этот агент) | `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\jarvis` |
+| Сайт (viacheslav-digital) | `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project` |
+| Мини-апп (viacheslav-tma) | `C:\Users\User\Documents\viacheslav-tma` |
+| Крипто-бот Pamp-Damp | `C:\crypto_bot\` |
+| Лид Машина | `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine` |
 
 ## Стек и инструменты
 
-> Дописывайте по мере выбора: что используете для frontend, backend, AI, deploy, дизайна. Локальные утилиты на компьютере (например yt-dlp, ffmpeg) — тоже сюда.
-
-*Пока пусто. Появится по мере появления конкретного стека.*
+- **Frontend:** HTML + Tailwind CDN (один файл, без фреймворков) — сайт и мини-апп
+- **Backend/боты:** Python (крипто-бот, Lead Machine), Node.js/Grammy (Jarvis-бот)
+- **AI:** Kimi 2.6 via OpenRouter (Lead Machine), Gemini via Polza API (n8n боты)
+- **БД:** Supabase (сайт), PostgreSQL + Redis (Lead Machine)
+- **Telegram API:** Binance Public API + WebSocket (крипто-бот), Telethon (Lead Machine)
 
 ---
 
