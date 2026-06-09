@@ -94,6 +94,7 @@
 - [n8n-article-generator-template.md](knowledge/n8n-article-generator-template.md) — двухшаговый диалог (тема → кол-во) + статьи с иллюстрациями через Polza API
 - [n8n-negotiator-template.md](knowledge/n8n-negotiator-template.md) — сессионный roleplay-бот, паттерн сброса памяти по /start
 - [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026: роли агентов, worktrees, CI, MCP
+- [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты, ссылки управления
 
 ---
 
