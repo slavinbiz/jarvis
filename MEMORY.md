@@ -22,7 +22,7 @@
 
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — личный лендинг сантехника. Один HTML (Tailwind CDN), тёмный фон, оранжевые акценты. Суpabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`. Проксируется через /tma на основном сайте.
-3. **Крипто-бот** — тестируется
+3. **Крипто-бот Pamp-Damp** (`C:\crypto_bot\crypto_bot.py`) — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+ + IIV аномалия объёма. Сервер: TimeWeb Cloud `64.188.57.249`, Ubuntu 22.04, screen. Команды: /menu /pairs /status /settings.
 4. **Лид Машина** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на сервер. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine`
 
 ---
