@@ -20,10 +20,10 @@
 
 ## Активные проекты
 
-1. Сайт — в разработке
-2. Мини-апп — в разработке
-3. Крипто-бот — тестируется
-4. **Лид Машина** — новый проект, папка: `C:\Users\User\Documents\ИИ и прочее\lid-mashine`
+1. **Сайт** (`slavinbiz/viacheslav-digital`) — личный лендинг сантехника. Один HTML (Tailwind CDN), тёмный фон, оранжевые акценты. Суpabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
+2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`. Проксируется через /tma на основном сайте.
+3. **Крипто-бот** — тестируется
+4. **Лид Машина** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на сервер. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine`
 
 ---
 
