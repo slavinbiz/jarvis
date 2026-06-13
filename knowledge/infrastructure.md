@@ -18,9 +18,9 @@
 - **Управление:** timeweb.cloud, аккаунт `ug02085`
 - **Управление ботом:** `screen -S bot` / `screen -r bot`
 - **VPN-панель (3x-ui):** https://64.188.57.249:4096/NDat7WCdMq9RsAOdLz/ (самоподписанный сертификат — принять предупреждение браузера)
-  - Логин: `admin` / Пароль: `JarvisVpn2026!`
+  - Логин/пароль сменены пользователем на свои, не хранятся здесь
   - Управление: `x-ui` (CLI на сервере: start/stop/restart/status/settings)
-  - Рекомендуется сменить пароль на свой через панель или `x-ui setting -username <user> -password <pass>`
+  - Если забудешь пароль — сброс через `x-ui setting -username <user> -password <pass>` на сервере
 
 ### Beget Latvia — Jarvis + Lead Machine
 - **Название:** Fearless Keaton
