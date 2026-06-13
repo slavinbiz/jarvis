@@ -13,10 +13,14 @@
 - **Конфиг:** 1 CPU, 1 GB RAM, 15 GB NVMe, Ubuntu 22.04
 - **Цена:** 770 ₽/месяц
 - **Продление:** ~16-е число каждого месяца
-- **Проекты:** Крипто-бот Pamp-Damp + VPN (3x-ui, планируется)
+- **Проекты:** Крипто-бот Pamp-Damp + VPN (3x-ui, работает)
 - **Нагрузка:** CPU ~3%, диск 31% (4.6/15 GB) — ресурсы есть
 - **Управление:** timeweb.cloud, аккаунт `ug02085`
 - **Управление ботом:** `screen -S bot` / `screen -r bot`
+- **VPN-панель (3x-ui):** https://64.188.57.249:4096/NDat7WCdMq9RsAOdLz/ (самоподписанный сертификат — принять предупреждение браузера)
+  - Логин: `admin` / Пароль: `JarvisVpn2026!`
+  - Управление: `x-ui` (CLI на сервере: start/stop/restart/status/settings)
+  - Рекомендуется сменить пароль на свой через панель или `x-ui setting -username <user> -password <pass>`
 
 ### Beget Latvia — Jarvis + Lead Machine
 - **Название:** Fearless Keaton
