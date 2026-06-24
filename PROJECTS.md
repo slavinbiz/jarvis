@@ -14,9 +14,12 @@
 
 ### Lead Machine
 - Стек: Python, aiogram, Telethon, Redis, FastAPI, OpenRouter (Kimi 2.6)
-- Статус: готов, ждёт деплоя
+- Статус (2026-06-24): задеплоен на VPS Beget Latvia 91.193.25.237 (тот же сервер, что и Jarvis). FastAPI + dispatch_loop работают, БД и миграции прошли, Telethon-сессия перенесена (уже авторизована). Не работает только Control Bot — TELEGRAM_BOT_TOKEN в .env это плейсхолдер, не настоящий токен
 - Репо: github.com/slavinbiz/lead-machine
-- Что дальше: деплой на VPS 91.193.25.237
+- Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
+- На сервере: `/home/agent/projects/lead-machine` (docker compose, контейнеры app/db/redis)
+- Что дальше: **создать Telegram-бота через @BotFather** для Lead Machine (отдельно от Jarvis), вписать токен в `.env` на сервере (`TELEGRAM_BOT_TOKEN=`), перезапустить `docker compose -f docker-compose.prod.yml up -d --build app`
+- Детали деплоя — knowledge/lead-machine-deploy.md
 
 ### VPN на продажу
 - Стек: 3x-ui (личный VPN) + s-ui (для клиентов, multi-user Hysteria2) на TimeWeb 64.188.57.249

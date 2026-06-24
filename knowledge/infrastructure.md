@@ -35,8 +35,9 @@
 - **ОС:** Ubuntu (LV)
 - **Цена:** ~700 ₽/месяц
 - **Продление:** ~17-е число каждого месяца
-- **Проекты:** Jarvis Telegram-бот, будущий деплой Lead Machine
+- **Проекты:** Jarvis Telegram-бот (systemd `agent-bot`), Lead Machine (docker compose, `/home/agent/projects/lead-machine`) — задеплоен 2026-06-24, детали и доступ в knowledge/lead-machine-deploy.md
 - **Управление:** cp.beget.com, аккаунт `slavinie`
+- **Диск:** был забит на 99% из-за мёртвого кэша VS Code Tunnel (2.9 ГБ в /root/.vscode/cli/servers) — почищен 2026-06-24, следить дальше
 
 ---
 
