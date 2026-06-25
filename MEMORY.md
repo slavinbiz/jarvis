@@ -21,13 +21,13 @@
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
 3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\`
-4. **Lead Machine** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Задеплоен на Beget 91.193.25.237 (2026-06-24), не хватает реального TELEGRAM_BOT_TOKEN для Control Bot (нужно завести бота через @BotFather). Детали: knowledge/lead-machine-deploy.md. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
+4. **Lead Machine** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на Beget. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
 
 ---
 
 ## Инфраструктура
 
-- **Beget Latvia** — 91.193.25.237 — Jarvis-бот + Lead Machine (docker compose). Оплата ~17-го, напоминание 12-го. Доступ — root-пароль (спросить у Вячеслава), подключение с этого компа через PuTTY plink/pscp (нет ключа, нет expect)
+- **Beget Latvia** — 91.193.25.237 — Jarvis-бот (этот сервер). Оплата ~17-го, напоминание 12-го.
 - **TimeWeb** — 64.188.57.249 — крипто-бот Pamp-Damp. Оплата ~16-го, напоминание 11-го.
 - **Vercel** — мини-апп `viacheslav-tma.vercel.app`
 
@@ -92,6 +92,11 @@
 - **События:** прямой запрос к Google Calendar REST API (MCP tools пока нестабильны на VPS)
 - **Токен истекает** каждые ~60 мин — обновлять через refresh в начале каждой сессии
 
+## Ключевые решения (Windows)
+
+- **Claude Code на Windows:** запускать из отдельного PowerShell (не VS Code terminal), с явным `$env:HTTPS_PROXY = "http://127.0.0.1:10810"`, из папки jarvis. Туннель Hysteria2 на порту 10810 обязателен.
+- **VS Code расширение Claude Code:** не работает (403 geo-block). Только CLI.
+
 ## Ссылки на knowledge/
 
 - [n8n-telegram-bot-template.md](knowledge/n8n-telegram-bot-template.md) — шаблон n8n Telegram-бота с мультиагентностью
@@ -100,7 +105,7 @@
 - [n8n-negotiator-template.md](knowledge/n8n-negotiator-template.md) — сессионный roleplay-бот
 - [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026
 - [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты
-- [lead-machine-deploy.md](knowledge/lead-machine-deploy.md) — деплой Lead Machine на Beget: доступ, проблемы и фиксы, команды перезапуска
+- [claude-code-windows.md](knowledge/claude-code-windows.md) — как запускать Claude Code на Windows через Hysteria2 туннель
 
 ---
 
