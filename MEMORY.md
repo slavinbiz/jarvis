@@ -95,7 +95,9 @@
 ## Ключевые решения (Windows)
 
 - **Claude Code на Windows:** запускать из отдельного PowerShell (не VS Code terminal), с явным `$env:HTTPS_PROXY = "http://127.0.0.1:10810"`, из папки jarvis. Туннель Hysteria2 на порту 10810 обязателен.
+- **Быстрый запуск:** ярлык «Claude Code» на рабочем столе → `scripts/start-claude.ps1` (сам поднимает туннель, выставляет прокси, стартует `claude`).
 - **VS Code расширение Claude Code:** не работает (403 geo-block). Только CLI.
+- **`.ps1` с кириллицей:** сохранять как UTF-8 с BOM, иначе Windows PowerShell 5.1 ломает русские буквы в пути/тексте и скрипт не парсится.
 
 ## Ссылки на knowledge/
 
