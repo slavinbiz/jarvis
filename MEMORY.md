@@ -18,6 +18,8 @@
 
 ## Активные проекты
 
+5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2 VPN. Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249`. Код: `C:\Users\User\projects\vpn-bot\`. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена).
+
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
 3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\`
@@ -66,6 +68,15 @@
   - Размытые «может быть, возможно» — если не уверен, скажи прямо
 
 ---
+
+## VPN-бот — технические детали
+
+- s-ui REST API авторизация не работает → прямой доступ к SQLite `/usr/local/s-ui/db/s-ui.db`
+- После изменений в SQLite — `systemctl restart s-ui` (функция `_reload_sui()` в sui.py)
+- Hysteria2 inbound ID=1, порт 443, тег `hysteria2-443`
+- Клиенты идентифицируются по `name = vpnbot_<user_id>`
+- Telegraph инструкция: https://telegra.ph/Kak-podklyuchit-Jarvis-VPN-06-27
+- Тестовый клиент `test-july` пароль `JITQrtrP3D` — не удалять
 
 ## Ключевые решения
 
