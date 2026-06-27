@@ -52,7 +52,7 @@
       "/home/agent/projects"
     ]
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true
