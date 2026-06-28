@@ -5,7 +5,7 @@
 ## Доступ к серверу
 
 - IP: 91.193.25.237 (Beget Latvia, тот же сервер что Jarvis-бот)
-- root-пароль — спросить у Вячеслава, не хранится в репо
+- root-пароль — `uB4Z5DrT~c~s` (актуален на 2026-06-28; если не подходит — сбросить в cp.beget.com → сервер)
 - На этой машине (Windows) нет SSH-ключа на сервер и нет `expect` — подключение через **PuTTY plink/pscp** с паролем напрямую:
   ```
   "/c/Program Files/PuTTY/plink.exe" -ssh -batch -hostkey "SHA256:TZAJK5jnGtdsay1IOax4sdWYmYdM65fO5t94v/w2ays" -pw "ПАРОЛЬ" root@91.193.25.237 "команда"
