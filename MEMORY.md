@@ -69,6 +69,12 @@
 
 ---
 
+## VPN-бот / s-ui — критичное правило
+
+- **НИКОГДА не писать JSON в blob-колонки s-ui (`options`, `out_json`, `config` в таблицах `inbounds`/`clients`) через сырой `sqlite3` без `CAST(... AS BLOB)`** — иначе Go-driver падает на `sql: Scan error ... unsupported Scan, storing driver.Value type string into type *json.RawMessage`, ядро Hysteria2 не стартует, VPN лежит у всех (личный + все клиенты бота). Ломалось так дважды (1 и 2 июля 2026) — подробности knowledge/s-ui-sqlite-editing.md
+- Меняя конфиг Hysteria2 (obfs и т.п.) на сервере — обновлять ВСЕ клиенты одновременно (свой Windows-туннель + шаблон клиента VPN-бота), иначе рвёт текущие подключения
+- Параллельно с этим компьютером Jarvis работает ещё и через Telegram-бота на Beget — та сессия тоже может лезть в TimeWeb/s-ui. Перед правками VPN-инфры сверяться со свежими дневниками memory/
+
 ## VPN-бот — технические детали
 
 - s-ui REST API авторизация не работает → прямой доступ к SQLite `/usr/local/s-ui/db/s-ui.db`
@@ -125,6 +131,7 @@
 - [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026
 - [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты
 - [claude-code-windows.md](knowledge/claude-code-windows.md) — как запускать Claude Code на Windows через Hysteria2 туннель
+- [s-ui-sqlite-editing.md](knowledge/s-ui-sqlite-editing.md) — как править базу s-ui через sqlite3, не роняя VPN (BLOB vs TEXT баг)
 
 ---
 
