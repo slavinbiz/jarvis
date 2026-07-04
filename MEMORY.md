@@ -18,7 +18,7 @@
 
 ## Активные проекты
 
-5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2 VPN. Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249`. Код: `C:\Users\User\projects\vpn-bot\`. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена).
+5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2+Trojan VPN (единый профиль, автопереключение). Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249` (`/root/vpn-bot`, systemd `vpn-bot`). Код: `C:\Users\User\projects\vpn-bot\`, репозиторий `github.com/slavinbiz/vpn-bot` (приватный) — деплой через git push/pull, НЕ scp. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена).
 
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
