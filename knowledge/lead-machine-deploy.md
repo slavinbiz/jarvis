@@ -26,7 +26,26 @@
 1. Диск сервера был забит на 99% (2.9 ГБ мёртвого кэша VS Code Tunnel в `/root/.vscode/cli/servers` — туннель не был даже запущен). Почистили: `rm -rf /root/.vscode/cli/servers/*`, `apt-get clean`, `journalctl --vacuum-time=3d`
 2. Docker не был установлен — поставили через `get.docker.com`
 3. aiogram 3.7.0 не принимает `parse_mode=` в конструкторе `Bot()` — нужен `default=DefaultBotProperties(parse_mode=...)`. Исправлено в `app/bot/control.py`, закоммичено в репо
-4. **Незакрытое: TELEGRAM_BOT_TOKEN в .env — плейсхолдер, не настоящий токен.** Control Bot падает с `TelegramUnauthorizedError`. Нужно создать бота через @BotFather для Lead Machine (отдельно от Jarvis-бота) и вписать токен в `.env` на сервере, затем `docker compose -f docker-compose.prod.yml up -d --build app`
+4. ~~TELEGRAM_BOT_TOKEN в .env — плейсхолдер~~ — закрыто, `@SlavinLeads_bot` работает
+5. ~~TELEGRAM_API_ID/HASH — плейсхолдер, Telethon не авторизован~~ — закрыто 2026-07-05: my.telegram.org стабильно блокировал создание приложения с основного номера Вячеслава (ошибка на всех VPN/браузерах), обошли публичной парой Telegram Desktop (`611335`/`d524b414d21f4d37f08684c1df41ac9c`). Telethon-сессия авторизована под отдельным номером +79064252045 (не личный — риск блокировки за автоматическую рассылку)
+
+## Деплой кода (сервер НЕ git-репозиторий)
+
+Код на сервере лежит без `.git` — деплой тарболлом, не `git pull`:
+```bash
+# локально
+cd "C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine"
+tar -czf /tmp/lead-machine-update.tar.gz app/ requirements.txt
+"/c/Program Files/PuTTY/pscp" -batch -hostkey "SHA256:TZAJK5jnGtdsay1IOax4sdWYmYdM65fO5t94v/w2ays" -pw "ПАРОЛЬ" /tmp/lead-machine-update.tar.gz root@91.193.25.237:/tmp/lead-machine-update.tar.gz
+
+# на сервере
+cd /home/agent/projects/lead-machine
+tar -xzf /tmp/lead-machine-update.tar.gz && rm /tmp/lead-machine-update.tar.gz
+chown -R agent:agent app requirements.txt
+docker compose -f docker-compose.prod.yml build app
+docker compose -f docker-compose.prod.yml up -d
+```
+Локальный git-репозиторий (`github.com/slavinbiz/lead-machine`) — источник правды для истории, но сервер синхронизируется вручную тарболлом. Стоит когда-нибудь завести сервер в git (как сделали для vpn-bot), но пока не сделано.
 
 ## Команды для перезапуска после правок
 

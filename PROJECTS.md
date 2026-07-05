@@ -14,12 +14,12 @@
 
 ### Lead Machine
 - Стек: Python, aiogram, Telethon, Redis, FastAPI, OpenRouter (Kimi 2.6)
-- Статус (2026-06-28): задеплоен на VPS Beget Latvia 91.193.25.237 (тот же сервер, что и Jarvis). Control Bot `@SlavinLeads_bot` запущен и отвечает на `/start`. Не работает: отправка сообщений лидам через Telethon — `TELEGRAM_API_ID/HASH` не получены, поля-заглушки
+- Статус (2026-07-05): **работает end-to-end**. Telethon авторизован (отдельный номер +79064252045, аккаунт "produser_viacheslav"), поиск лидов переписан на Telegram `messages.searchGlobal` (реальные сообщения с триггер-фразами вместо каналов по имени на tgstat.ru, который к тому же закрыт Cloudflare). Автозапуск раз в час. Первый прогон нашёл 5 реальных лидов
 - Репо: github.com/slavinbiz/lead-machine
 - Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
-- На сервере: `/home/agent/projects/lead-machine` (docker compose, контейнеры app/db/redis)
-- Что дальше: получить `TELEGRAM_API_ID/HASH` (my.telegram.org), проверить команды `/leads /queue /dialogs /stats /search`, первый прогон Finder/Dispatcher на реальных лидах
-- Детали деплоя — knowledge/lead-machine-deploy.md
+- На сервере: `/home/agent/projects/lead-machine` (docker compose, контейнеры app/db/redis). **Не git-репозиторий** — деплой тарболлом+pscp, не git pull
+- Что дальше: последить за качеством лидов на бОльшем объёме, разобраться почему my.telegram.org блокирует создание приложений с основного номера Вячеслава (сейчас обход — публичный api_id Telegram Desktop), в перспективе завести сервер в git
+- Детали деплоя — knowledge/lead-machine-deploy.md, дизайн поиска — docs/superpowers/specs/2026-07-05-lead-machine-telethon-search-design.md
 
 ### VPN-бот (продажа VPN)
 - Стек: s-ui (multi-user Hysteria2) на TimeWeb 64.188.57.249, бот на aiogram 3.x — `@djarvisvpn_bot`, код `C:\Users\User\projects\vpn-bot\`
