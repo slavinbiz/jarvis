@@ -132,7 +132,7 @@
 - [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты
 - [claude-code-windows.md](knowledge/claude-code-windows.md) — как запускать Claude Code на Windows через Hysteria2 туннель
 - [s-ui-sqlite-editing.md](knowledge/s-ui-sqlite-editing.md) — как править базу s-ui через sqlite3, не роняя VPN (BLOB vs TEXT баг)
-- [telegram-post-templates.md](knowledge/telegram-post-templates.md) — шаблон постов о продаже продукта в @santex_ai + разбор способов оплаты для самозанятого (ЮMoney, Продамус)
+- [telegram-post-templates.md](knowledge/telegram-post-templates.md) — шаблон постов о продаже продукта в @santex_s_ai + разбор способов оплаты для самозанятого (ЮMoney, Продамус)
 
 ---
 
