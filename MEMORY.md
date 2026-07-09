@@ -20,7 +20,7 @@
 
 5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2+Trojan VPN (единый профиль, автопереключение). Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249` (`/root/vpn-bot`, systemd `vpn-bot`). Код: `C:\Users\User\projects\vpn-bot\`, репозиторий `github.com/slavinbiz/vpn-bot` (приватный) — деплой через git push/pull, НЕ scp. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена).
 
-1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
+1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. Ссылка: https://www.demin.digital/ (домен проксирует Vercel-деплой viacheslav-digital.vercel.app). HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
 3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\`
 4. **Lead Machine** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на Beget. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
