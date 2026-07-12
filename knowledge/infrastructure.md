@@ -16,7 +16,7 @@
 - **Проекты:** Крипто-бот Pamp-Damp + VPN (3x-ui, работает)
 - **Нагрузка:** CPU ~3%, диск 31% (4.6/15 GB) — ресурсы есть
 - **Управление:** timeweb.cloud, аккаунт `ug02085`
-- **Управление ботом:** `screen -S bot` / `screen -r bot`
+- **Крипто-бот теперь под systemd (с 2026-07-12), не screen:** юнит `crypto-bot.service` (`/etc/systemd/system/crypto-bot.service`), `ExecStart=/usr/bin/python3 /root/crypto_bot.py`, `Restart=always`, `RestartSec=10`, `enabled` — переживает краш и перезагрузку сервера сам. Управление: `systemctl status|restart|stop crypto-bot`. Лог по-прежнему в `/root/bot.log`. Код бота: `crypto_bot.py` + `ema_trend.py`, локально в `C:\crypto_bot\` (свой git-репозиторий, ветка `master`). До этой даты бот стоял без присмотра больше полутора месяцев (упал в мае, никто не заметил) — стоит периодически проверять `systemctl status crypto-bot`
 - **VPN-панель (3x-ui):** https://64.188.57.249:4096/NDat7WCdMq9RsAOdLz/ (самоподписанный сертификат — принять предупреждение браузера)
   - Логин/пароль сменены пользователем на свои, не хранятся здесь
   - Управление: `x-ui` (CLI на сервере: start/stop/restart/status/settings)

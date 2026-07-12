@@ -22,7 +22,7 @@
 
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг сантехника. Ссылка: https://www.demin.digital/ (домен проксирует Vercel-деплой viacheslav-digital.vercel.app). HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
-3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\`
+3. **Крипто-бот Pamp-Damp** — сигнальный бот Binance. WebSocket все USDT-пары, памп/дамп 6%+. Сервер: TimeWeb `64.188.57.249`. Локально: `C:\crypto_bot\` (свой git-репозиторий, ветка `master`). С 2026-07-12 под systemd (`crypto-bot.service`, автоперезапуск) — раньше стоял без присмотра через screen и падал незамеченным. Добавлен EMA-фильтр тренда: к каждому сигналу подмешивается вердикт 🟢/🟡/🔴/⚪ по тренду 1H (EMA50/EMA200) и положению цены к EMA20 на 15m, помогает решить стоит ли входить в сделку. Порог настраивается в `bot_settings.json` (`EMA_DISTANCE_THRESHOLD_PCT`). Детали — knowledge/infrastructure.md
 4. **Lead Machine** (`slavinbiz/lead-machine`) — TGstat scraper + AI-диалоги (Kimi) + очередь Redis. Ждёт деплоя на Beget. Локально: `C:\Users\User\Documents\ИИ и прочее\lid-mashine\lead-machine`
 
 ---
