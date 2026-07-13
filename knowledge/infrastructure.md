@@ -16,7 +16,9 @@
 - **Проекты:** Крипто-бот Pamp-Damp + VPN (3x-ui, работает)
 - **Нагрузка:** CPU ~3%, диск 31% (4.6/15 GB) — ресурсы есть
 - **Управление:** timeweb.cloud, аккаунт `ug02085`
-- **Крипто-бот теперь под systemd (с 2026-07-12), не screen:** юнит `crypto-bot.service` (`/etc/systemd/system/crypto-bot.service`), `ExecStart=/usr/bin/python3 /root/crypto_bot.py`, `Restart=always`, `RestartSec=10`, `enabled` — переживает краш и перезагрузку сервера сам. Управление: `systemctl status|restart|stop crypto-bot`. Лог по-прежнему в `/root/bot.log`. Код бота: `crypto_bot.py` + `ema_trend.py`, локально в `C:\crypto_bot\` (свой git-репозиторий, ветка `master`). До этой даты бот стоял без присмотра больше полутора месяцев (упал в мае, никто не заметил) — стоит периодически проверять `systemctl status crypto-bot`
+- **Крипто-бот теперь под systemd (с 2026-07-12), не screen:** юнит `crypto-bot.service` (`/etc/systemd/system/crypto-bot.service`), `ExecStart=/usr/bin/python3 /root/crypto_bot.py`, `Restart=always`, `RestartSec=10`, `enabled` — переживает краш и перезагрузку сервера сам. Управление: `systemctl status|restart|stop crypto-bot`. Лог по-прежнему в `/root/bot.log`. Код бота: `crypto_bot.py` + `ema_trend.py`, локально в `C:\crypto_bot\` (свой git-репозиторий, ветка `master`, без GitHub remote). До этой даты бот стоял без присмотра больше полутора месяцев (упал в мае, никто не заметил) — стоит периодически проверять `systemctl status crypto-bot`
+- **Деплой кода бота:** сервер НЕ git-репозиторий (файлы лежат прямо в `/root/`) — `scp -i ~/.ssh/id_ed25519 crypto_bot.py root@64.188.57.249:/root/crypto_bot.py`, потом `systemctl restart crypto-bot`. SSH-ключ работает без пароля на этот сервер
+- **Автопроверка сигналов (с 2026-07-13):** после каждого сигнала памп/дамп бот через 15/60/240 минут сам сверяет цену (берёт из уже текущего вебсокет-потока, без доп. запросов к Binance) и шлёт в Telegram вердикт 🟢 в плюс / 🔴 в минус / ⚪ около входа (дедзона ±0.5%, настройки `SIGNAL_CHECK_MINUTES`/`SIGNAL_CHECK_DEADZONE_PCT` в начале `crypto_bot.py`)
 - **VPN-панель (3x-ui):** https://64.188.57.249:4096/NDat7WCdMq9RsAOdLz/ (самоподписанный сертификат — принять предупреждение браузера)
   - Логин/пароль сменены пользователем на свои, не хранятся здесь
   - Управление: `x-ui` (CLI на сервере: start/stop/restart/status/settings)
@@ -41,11 +43,12 @@
 
 ## Бесплатные сервисы
 
-### Supabase — база данных сайта
+### Supabase — база данных мини-аппа мастера
 - **Проект:** viacheslav-digital
 - **URL:** jxeuxbrvfwvdajcbacxq.supabase.co
 - **Тариф:** Free (NANO), West EU (Ireland, eu-west-1)
-- **Использование:** хранение заявок с сайта сантехника
+- **Использование:** мини-апп мастера (`viacheslav-tma`) дёргает Supabase напрямую из браузера для лидов. Сайт demin.digital Supabase НЕ использует — его форма заявок шлёт напрямую в Telegram через `/api/contact.js`
+- **Риск:** free-тир приостанавливает проект при неактивности — 2026-07-13 так и случилось (DNS домена перестал резолвиться вообще, NXDOMAIN, усугубилось параллельным техническим инцидентом на стороне Supabase). Чинится вручную: dashboard.supabase.com → проект → Restore project. Периодически проверять, если мини-апп снова "не грузит"
 
 ### Vercel — хостинг мини-аппа
 - **Проект:** viacheslav-tma
