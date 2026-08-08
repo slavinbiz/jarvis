@@ -1,21 +1,21 @@
-﻿# Запуск Claude Code на Windows: проверяет туннель Hysteria2, поднимает его при необходимости,
-# задаёт прокси-переменные и стартует claude. См. knowledge/claude-code-windows.md
+﻿# Запуск Claude Code на Windows: проверяет VPN Happ, поднимает его при необходимости,
+# задаёт прокси и стартует claude. См. knowledge/claude-code-windows.md
 
-$tunnelShortcut = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Hysteria2-VPN-Tunnel.lnk"
+$happExe = "C:\Program Files\FlyFrogLLC\Happ\Happ.exe"
 $jarvisPath = "C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\jarvis"
-$proxyUrl = "http://127.0.0.1:10810"
+$proxyUrl = "http://127.0.0.1:10809"
 
 function Test-Tunnel {
-    (Test-NetConnection 127.0.0.1 -Port 10810 -WarningAction SilentlyContinue).TcpTestSucceeded
+    (Test-NetConnection 127.0.0.1 -Port 10809 -WarningAction SilentlyContinue).TcpTestSucceeded
 }
 
 if (-not (Test-Tunnel)) {
-    Write-Host "Туннель не отвечает на 10810 — запускаю Hysteria2-VPN-Tunnel..." -ForegroundColor Yellow
-    if (Test-Path $tunnelShortcut) {
-        Start-Process $tunnelShortcut
+    Write-Host "Happ VPN не отвечает на 10809 — запускаю Happ..." -ForegroundColor Yellow
+    if (Test-Path $happExe) {
+        Start-Process $happExe
         Start-Sleep -Seconds 3
     } else {
-        Write-Host "Ярлык не найден: $tunnelShortcut" -ForegroundColor Red
+        Write-Host "Happ не найден по пути: $happExe" -ForegroundColor Red
     }
 }
 
@@ -26,11 +26,11 @@ while (-not (Test-Tunnel) -and $attempts -lt 5) {
 }
 
 if (-not (Test-Tunnel)) {
-    Write-Host "Туннель так и не поднялся на 127.0.0.1:10810. Запусти Hysteria2-VPN-Tunnel вручную и попробуй снова." -ForegroundColor Red
+    Write-Host "Happ так и не поднял прокси на 127.0.0.1:10809. Запусти Happ вручную (и включи подключение) и попробуй снова." -ForegroundColor Red
     exit 1
 }
 
-Write-Host "Туннель работает." -ForegroundColor Green
+Write-Host "VPN работает." -ForegroundColor Green
 
 $env:HTTPS_PROXY = $proxyUrl
 $env:HTTP_PROXY = $proxyUrl
