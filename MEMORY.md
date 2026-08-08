@@ -30,7 +30,7 @@
 ## Инфраструктура
 
 - **Beget Latvia** — 91.193.25.237 — БЕЗВОЗВРАТНО ПОТЕРЯН 24.07 (санкции ЕС, датацентр отключил размещение). Раньше был Jarvis-ботом. Подробности memory/2026-08-04.md
-- **Fornex** — 213.193.196.125 (Германия, `343230.fornex.cloud`, Ubuntu 24.04) — новый сервер, добавлен 08.08.2026 взамен Beget Latvia. SSH-ключ прописан, доступ без пароля. Ресурсы скромные: 1GB RAM (180Mi свободно на 08.08), диск 9.8G (6G свободно) — под Jarvis-бота + Claude Code CLI может быть тесно, проверить при деплое. Планируется под Jarvis Telegram-бота.
+- **Fornex** — 213.193.196.125 (Германия, `343230.fornex.cloud`, Ubuntu 24.04) — новый сервер, добавлен 08.08.2026 взамен Beget Latvia. SSH-ключ прописан, доступ без пароля. Ресурсы скромные: 1GB RAM, диск 9.8G (5.4G свободно) — добавлен своп 2GB (`/swapfile`, в `/etc/fstab`, `vm.swappiness=10`) 08.08. **Jarvis-бот (`@dgarvise_bot`) развёрнут и работает** — Node.js 20, Claude Code CLI (залогинен под `agent` как `slavin507@gmail.com`), systemd `agent-bot` (enabled, active), DNA-файлы в `/home/agent/workspace/`, код бота `/home/agent/.agent/bot/`, секреты `/home/agent/.agent/.env`.
 - **TimeWeb** — 64.188.57.249 — крипто-бот Pamp-Damp. Оплата ~16-го, напоминание 11-го.
 - **Vercel** — мини-апп `viacheslav-tma.vercel.app`
 
