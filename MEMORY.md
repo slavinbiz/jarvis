@@ -18,7 +18,8 @@
 
 ## Активные проекты
 
-5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2+Trojan VPN (единый профиль, автопереключение). Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249` (`/root/vpn-bot`, systemd `vpn-bot`). Код: `C:\Users\User\projects\vpn-bot\`, репозиторий `github.com/slavinbiz/vpn-bot` (приватный) — деплой через git push/pull, НЕ scp. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена).
+5. **VPN-бот** (`@djarvisvpn_bot`) — продажа Hysteria2+Trojan VPN (единый профиль, автопереключение). Триал 3 дня, 150 ₽/мес, реферальная программа (+7 дней за друга). Сервер: TimeWeb `64.188.57.249` (`/root/vpn-bot`, systemd `vpn-bot`). Код: `C:\Users\User\projects\vpn-bot\`, репозиторий `github.com/slavinbiz/vpn-bot` (приватный) — деплой через git push/pull, НЕ scp. Продвижение: органика через @santex_ai + реферальная программа (реклама VPN в РФ ограничена). **Важно:** 14.08.2026 обнаружено, что провайдер Вячеслава заблокировал IP этого сервера целиком (не только протокол VPN) — не проверено, задевает ли блок клиентов бота с других провайдеров, стоит проверить отдельно (см. memory/2026-08-14.md).
+   - **Личная раздача VPN друзьям** — отдельно от бота: Вячеслав вручную делится личным VPN-доступом (сейчас Hysteria2/Fornex, раньше TimeWeb) через чат в Telegram — это для своих, бесплатно, без продаж, не путать с коммерческим `@djarvisvpn_bot`.
 
 1. **Сайт** (`slavinbiz/viacheslav-digital`) — лендинг. Развёрнут: `www.demin.digital` (Vercel `viacheslav-digital.vercel.app`). HTML + Tailwind CDN, Supabase для заявок, Telegram-бот для уведомлений. Локально: `C:\Users\User\Documents\ИИ и прочее\вайбкодинг\Дмитрий Ледовских-курс\my project`
 2. **Мини-апп** (`slavinbiz/viacheslav-tma`) — Telegram Mini App мастера. Онбординг, бриф-форма, dashboard. Развёрнут: `viacheslav-tma.vercel.app`
