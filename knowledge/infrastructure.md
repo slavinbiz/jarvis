@@ -59,6 +59,24 @@
 
 ---
 
+## Синхронизация памяти Jarvis-бота (Fornex) с GitHub
+
+**Проблема (найдена 15.08.2026):** после переезда с Beget на Fornex (08.08) `/home/agent/workspace` на сервере был просто скопированной папкой, не git-репозиторием. У пользователя `agent` не было ни git-конфига, ни SSH-ключа к GitHub, `scripts/memory-sync.sh` нигде не стоял в cron. Итог — бот правил `MEMORY.md` прямо на диске сервера, но эти правки никогда не уходили в GitHub, а Windows-сессия видела только GitHub. Обе стороны расходились молча.
+
+**Как починено:**
+- `/home/agent/workspace` на Fornex теперь настоящий `git clone git@github.com:slavinbiz/jarvis.git`
+- SSH deploy key сгенерирован для пользователя `agent` (`/home/agent/.ssh/id_ed25519`), добавлен в GitHub → Settings → Deploy keys с правом **Allow write access**
+- `git config user.name/email` выставлены для agent, `github.com` добавлен в `known_hosts`
+- `scripts/memory-sync.sh` переписан: сначала коммитит локальные правки (`MEMORY.md`, `LEARNED.md`, `memory/`, `knowledge/`), потом `git pull --rebase origin main`, потом push. Ошибки pull/commit/push не глотаются молча — пишутся в `/home/agent/workspace-sync.log`
+- Стоит в cron агента: `*/15 * * * * /home/agent/workspace/scripts/memory-sync.sh`
+- Старая копия workspace (до фикса) оставлена как бэкап: `/home/agent/workspace.old` и `/home/agent/workspace.bak.20260815` (~700KB каждая, можно снести за ненадобностью)
+
+**Как проверить, что синк жив:** `ssh root@213.193.196.125 "tail -5 /home/agent/workspace-sync.log"` — там должно быть `synced ok` не старше 15-20 минут (если были правки) или вообще ничего нового (если правок не было — скрипт молча выходит).
+
+**На будущее:** если ставишь Jarvis-бота на новый сервер — сразу `git clone` в workspace, а не копирование файлов, и сразу проверяй, что cron с `memory-sync.sh` реально стоит (`crontab -u agent -l`), а не просто лежит в репозитории мёртвым грузом.
+
+---
+
 ## Когда платить
 
 Настроены ежемесячные напоминалки через Jarvis-бот:

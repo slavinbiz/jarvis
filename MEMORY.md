@@ -147,6 +147,7 @@
 - [s-ui-sqlite-editing.md](knowledge/s-ui-sqlite-editing.md) — как править базу s-ui через sqlite3, не роняя VPN (BLOB vs TEXT баг)
 - [telegram-post-templates.md](knowledge/telegram-post-templates.md) — шаблон постов о продаже продукта в @santex_s_ai + разбор способов оплаты для самозанятого (ЮMoney, Продамус)
 - [ai-agent-repos.md](knowledge/ai-agent-repos.md) — 33 open-source репозитория AI-агентов по категориям (фреймворки, coding agents, MCP, память, инструменты) — референс для архитектурных решений
+- [infrastructure.md#синхронизация-памяти-jarvis-бота-fornex-с-github](knowledge/infrastructure.md) — как устроен git-sync workspace на сервере (cron memory-sync.sh каждые 15 мин), что проверить если память снова разойдётся
 
 ---
 
