@@ -89,7 +89,7 @@
 
 ## Ключевые решения
 
-- **Картинки к постам (Jarvis, в работе с 08.08):** генерация через Polza API (`google/gemini-2.5-flash-image`), без правки кода бота — знание кладём в `knowledge/image-generation.md`, вызов через Bash/curl по команде в чате. Регистрация на Polza — по партнёрской ссылке `https://polza.ai/?referral=rk4YP1eJRj`. Ключ `POLZA_API_KEY` в `.env` на Fornex добавляет сам Вячеслав (зона запрещена для агента). Детали memory/2026-08-08.md
+- **Картинки к постам (Jarvis, готово с 15.08):** генерация через Pollinations.ai (бесплатно, без ключа) — `knowledge/image-generation.md`, вызов через Bash/curl по команде в чате, без правки кода бота. Задумывали изначально через Polza API (08.08), но ключ так и не завели — пивотнули на бесплатный вариант и наконец доделали 15.08 (план провалялся невыполненным неделю). Polza (Gemini 2.5 Flash Image, ~3-4₽/картинку) остаётся запасным вариантом на будущее, реферальная ссылка `https://polza.ai/?referral=rk4YP1eJRj` сохранена в memory/2026-08-08.md, не подключаем пока не понадобится
 - **Google Calendar:** MCP tools нестабильны на VPS — используем прямой REST API с Bearer токеном. Токен обновлять в начале каждой сессии (протухает за ~60 мин).
 - **Голосовые сообщения:** работают через Jarvis-бот, транскрибируются корректно — можно диктовать задачи и события календаря.
 - **Ежемесячные напоминалки:** manage-schedule.js не поддерживает `monthly`, создано 12 событий `once` на каждый месяц (Beget 12-го, TimeWeb 11-го).
@@ -143,6 +143,7 @@
 
 ## Ссылки на knowledge/
 
+- [image-generation.md](knowledge/image-generation.md) — генерация иллюстраций к постам через Pollinations.ai (бесплатно, без ключа)
 - [n8n-telegram-bot-template.md](knowledge/n8n-telegram-bot-template.md) — шаблон n8n Telegram-бота с мультиагентностью
 - [n8n-skazochnik-template.md](knowledge/n8n-skazochnik-template.md) — генератор длинного контента по главам
 - [n8n-article-generator-template.md](knowledge/n8n-article-generator-template.md) — двухшаговый диалог + статьи с иллюстрациями
