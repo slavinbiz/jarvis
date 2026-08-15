@@ -154,6 +154,14 @@ npx degit Ntmib/jarvis-architect/.claude/skills .claude/skills
 
 ---
 
+## Кастомные скиллы проекта (не из шаблона)
+
+Помимо 4 базовых + `reminder`/`server-setup` (тоже из шаблона), в проекте появляются свои скиллы под конкретные повторяющиеся задачи Вячеслава:
+
+### `santex-post-writer` — писатель постов для @santex_s_ai
+
+Справочник голоса и формата канала (HTML для Telegram, жирный только в заголовке, черновик всегда на согласование, запрет упоминать VPN-бот, шаблоны для дайджеста/практики/продажи). Добавлен 15.08.2026, чтобы Claude Code сразу подхватывал стиль канала без напоминаний каждый раз.
+
 ## Текущая структура
 
 ```
@@ -167,7 +175,11 @@ jarvis/
         │   └── SKILL.md
         ├── fullstack-developer/
         │   └── SKILL.md
-        └── frontend-design/
+        ├── frontend-design/
+        │   └── SKILL.md
+        ├── reminder/
+        ├── server-setup/
+        └── santex-post-writer/      ← кастомный, см. выше
             └── SKILL.md
 ```
 
