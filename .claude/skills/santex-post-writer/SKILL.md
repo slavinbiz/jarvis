@@ -21,7 +21,7 @@ description: Use when writing or drafting a post for Вячеслав's Telegram
 - Эмодзи в тексте — по вкусу, не перегружать
 - Разрешённые Telegram-теги вообще: `<b>`, `<i>`, `<code>`, `<pre>`, `<a href="">` — но в теле поста канала используем только структуру через тире, жирный оставляем заголовку
 
-## Публикация — ВСЕГДА черновик на согласование
+## Публикация — ВСЕГДА черновик на согласование (кроме дайджеста)
 
 Готовлю текст (и картинку, если просили — см. `knowledge/image-generation.md`), показываю Вячеславу, публикую в канал только после явного "ок"/"публикуй". Технически можно постить напрямую через Bot API (`@dgarvise_bot` — админ канала), но не делать этого без подтверждения. Решение зафиксировано 08.08.2026.
 
@@ -134,7 +134,7 @@ curl -sf -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
 
 # с картинкой
 curl -sf -X POST "https://api.telegram.org/bot${TOKEN}/sendPhoto" \
-  -F chat_id=@santex_s_ai -F parse_mode=HTML -F caption="<HTML-текст>" \
+  -F "chat_id=\@santex_s_ai" -F parse_mode=HTML -F caption="<HTML-текст>" \
   -F photo=@"<путь_к_картинке>"
 ```
 
