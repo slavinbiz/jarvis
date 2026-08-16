@@ -21,3 +21,4 @@ Thumbs.db
 # Claude Code локальные настройки
 .claude/settings.local.json
 .media/
+.smm-pending.json
