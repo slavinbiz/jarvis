@@ -128,24 +128,36 @@ description: Use when writing or drafting a post for Вячеслав's Telegram
 **Не для субагента `smm`** — он не публикует сам, даже с доступом к Bash и этому файлу (см. `.claude/agents/smm.md`). Публикует только вызвавшая сессия, после решения по матрице выше.
 
 Токен `@dgarvise_bot` — в `/home/agent/projects/santex-poster/credentials.json`
-(поле `bot_token`), бот уже админ канала. Никогда не печатать сам токен в
-чат.
+(поле `TELEGRAM_BOT_TOKEN`, канал — `CHANNEL_ID`), бот уже админ канала.
+Никогда не печатать сам токен в чат.
 
 ```bash
-TOKEN=$(node -e "console.log(require('/home/agent/projects/santex-poster/credentials.json').bot_token)")
+TOKEN=$(node -e "console.log(require('/home/agent/projects/santex-poster/credentials.json').TELEGRAM_BOT_TOKEN)")
 ```
 
 Если есть картинка (`image` в pending-записи не `null`, или явно попросили картинку) — используй `sendPhoto`. Без картинки — `sendMessage`.
 
+**Лимит подписи к фото у Telegram — 1024 символа.** Посты канала обычно длиннее.
+Если текст > 1024 символов — `sendPhoto` БЕЗ caption, затем отдельным
+`sendMessage` тот же текст. Проверено вживую 17.08.2026 (пост 1407 символов
+упал с `"Bad Request: message caption is too long"` при попытке передать его
+как caption).
+
 ```bash
-# без картинки
+# без картинки, или текст короче 1024 символов с картинкой
 curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
   -d chat_id=@santex_s_ai -d parse_mode=HTML --data-urlencode text="<HTML-текст>"
 
-# с картинкой
+# картинка + короткий текст (≤1024) одним сообщением
 curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendPhoto" \
   --form-string chat_id=@santex_s_ai -F parse_mode=HTML -F caption="<HTML-текст>" \
   -F photo=@"<путь_к_картинке>"
+
+# картинка + длинный текст (>1024) — двумя сообщениями подряд
+curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendPhoto" \
+  --form-string chat_id=@santex_s_ai -F photo=@"<путь_к_картинке>"
+curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+  -d chat_id=@santex_s_ai -d parse_mode=HTML --data-urlencode text="<HTML-текст>"
 ```
 
 Проверить в JSON-ответе `"ok":true`. Если `false` — не считать пост
