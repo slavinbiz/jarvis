@@ -173,6 +173,8 @@
 - [infrastructure.md#синхронизация-памяти-jarvis-бота-fornex-с-github](knowledge/infrastructure.md) — как устроен git-sync workspace на сервере (cron memory-sync.sh каждые 15 мин), что проверить если память снова разойдётся
 - [neurozavod-architecture.md](knowledge/neurozavod-architecture.md) — карта нейрозавода: концепция оркестратор+субагенты, 5 ролей, план создания субагента, шаблон командировки — референс при сборке новых субагентов
 - [30-ai-sotrudnikov.md](knowledge/30-ai-sotrudnikov.md) — каталог 30 готовых AI-ролей Ледовских (10 направлений: маркетинг, аналитика, руководителю, исследования, продажи, контент, HR, эксперту, упаковка, клиенты) — референс при выборе следующего субагента
+- [claude-11-strong-prompts.md](knowledge/claude-11-strong-prompts.md) — 11 готовых промптов Ледовских (анализ конкурентов, ЦА, оффер, лендинг, CustDev, метрики, аудит бизнеса) — брать шаблоном для клиентских задач
+- [claude-skills-repo-345.md](knowledge/claude-skills-repo-345.md) — репозиторий github.com/alirezarezvani/claude-skills, 345+ скиллов для Claude Code — не проверен вживую, смотреть при поиске готовых скиллов под новую задачу
 
 ---
 
