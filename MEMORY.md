@@ -172,6 +172,7 @@
 - [ai-agent-repos.md](knowledge/ai-agent-repos.md) — 33 open-source репозитория AI-агентов по категориям (фреймворки, coding agents, MCP, память, инструменты) — референс для архитектурных решений
 - [infrastructure.md#синхронизация-памяти-jarvis-бота-fornex-с-github](knowledge/infrastructure.md) — как устроен git-sync workspace на сервере (cron memory-sync.sh каждые 15 мин), что проверить если память снова разойдётся
 - [neurozavod-architecture.md](knowledge/neurozavod-architecture.md) — карта нейрозавода: концепция оркестратор+субагенты, 5 ролей, план создания субагента, шаблон командировки — референс при сборке новых субагентов
+- [30-ai-sotrudnikov.md](knowledge/30-ai-sotrudnikov.md) — каталог 30 готовых AI-ролей Ледовских (10 направлений: маркетинг, аналитика, руководителю, исследования, продажи, контент, HR, эксперту, упаковка, клиенты) — референс при выборе следующего субагента
 
 ---
 
