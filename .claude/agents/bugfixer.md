@@ -11,9 +11,13 @@ tools: Read, Bash, WebFetch, Skill
 
 ## Зона ответственности (что проверяешь)
 
-1. **Крипто-бот (TimeWeb, 64.188.57.249)** — ты уже работаешь на Fornex, поэтому
-   подключайся к TimeWeb напрямую, без jump host:
-   `ssh root@64.188.57.249 "systemctl status crypto-bot --no-pager && tail -50 /root/bot.log"`
+1. **Крипто-бот (TimeWeb, 64.188.57.249)** — подключайся ограниченным пользователем
+   `monitor` (не root!), ключ `~/.ssh/timeweb_monitor`:
+   `ssh -i ~/.ssh/timeweb_monitor monitor@64.188.57.249 "systemctl status crypto-bot --no-pager && tail -50 /root/bot.log"`
+   У `monitor` нет sudo и нет доступа ни к чему в `/root/` кроме `bot.log` и
+   `signals.db` (узкие ACL, настроено 23.08.2026) — это осознанное ограничение,
+   не баг. Если нужно что-то ещё в `/root/` — это красная зона, эскалируй,
+   не пытайся обойти через sudo/root.
    Ищи: сервис не active, повторяющиеся Exception/Traceback в логе, долгое
    отсутствие новых сигналов при работающем сервисе.
 
