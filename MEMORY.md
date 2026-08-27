@@ -175,6 +175,7 @@
 - [vibe-coding-2026.md](knowledge/vibe-coding-2026.md) — как топ-вайбкодеры строят в 2026
 - [infrastructure.md](knowledge/infrastructure.md) — все облачные сервисы: серверы, цены, даты оплаты
 - [claude-code-windows.md](knowledge/claude-code-windows.md) — как запускать Claude Code на Windows через Hysteria2 туннель
+- [outreach-pitch-template.md](knowledge/outreach-pitch-template.md) — формула и шаблон отклика на вакансию/питча клиенту (задача → навык → доказательство), использовать при любом холодном обращении
 - [s-ui-sqlite-editing.md](knowledge/s-ui-sqlite-editing.md) — как править базу s-ui через sqlite3, не роняя VPN (BLOB vs TEXT баг)
 - [telegram-post-templates.md](knowledge/telegram-post-templates.md) — шаблон постов о продаже продукта в @santex_s_ai + разбор способов оплаты для самозанятого (ЮMoney, Продамус)
 - [ai-agent-repos.md](knowledge/ai-agent-repos.md) — 33 open-source репозитория AI-агентов по категориям (фреймворки, coding agents, MCP, память, инструменты) — референс для архитектурных решений
