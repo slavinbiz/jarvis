@@ -188,6 +188,7 @@
 - [client-outreach-pitch.md](knowledge/client-outreach-pitch.md) — питч-текст и площадки для поиска первых клиентов на demin.digital
 - [neuromultiki-pipeline.md](knowledge/neuromultiki-pipeline.md) — пайплайн создания коротких ИИ-мультиков (идея→сценарий Claude→развёртка персонажа→Syntx.ai анимация→монтаж), 24.08.2026, держим как идею перелива аудитории в @santex_s_ai, не проработано
 - [automontage-agent.md](knowledge/automontage-agent.md) — AutoMontage-Agent (github.com/Ntmib/AutoMontage-Agent), локальный агент-монтажёр видео (субтитры/плашки/счётчики/перекадрирование). **Установлен 24.08.2026** в `C:\Users\User\projects\AutoMontage-Agent\`, `automontage doctor` зелёный, реальный монтаж ещё не пробовали
+- [kniga-ai-receptov.md](knowledge/kniga-ai-receptov.md) — «Книга ИИ-рецептов», бонус практикума «ИИшница» Ледовских (участвует Вячеслав), 20 промпт-рецептов по 7 разделам — заработок/сайт-бот/агенты/нейрозавод/автоматизация, referenced 27.08.2026
 
 ---
 
