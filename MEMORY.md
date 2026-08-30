@@ -191,6 +191,7 @@
 - [automontage-agent.md](knowledge/automontage-agent.md) — AutoMontage-Agent (github.com/Ntmib/AutoMontage-Agent), локальный агент-монтажёр видео (субтитры/плашки/счётчики/перекадрирование). **Установлен 24.08.2026** в `C:\Users\User\projects\AutoMontage-Agent\`, `automontage doctor` зелёный, реальный монтаж ещё не пробовали
 - [kniga-ai-receptov.md](knowledge/kniga-ai-receptov.md) — «Книга ИИ-рецептов», бонус практикума «ИИшница» Ледовских (участвует Вячеслав), 20 промпт-рецептов по 7 разделам — заработок/сайт-бот/агенты/нейрозавод/автоматизация, referenced 27.08.2026
 - [scam-blacklist.md](knowledge/scam-blacklist.md) — чёрный список платформ (не давать деньги/API-ключи), 28.08.2026: cortx.net и куст скам-клонов cortextrade/kortextrades
+- [mail-digest.md](knowledge/mail-digest.md) — как проверить почту slavin68@mail.ru (только с этой Windows-машины, гео-блок mail.ru не пускает Fornex), рабочий рецепт через imaplib
 
 ---
 
