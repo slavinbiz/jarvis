@@ -26,3 +26,4 @@ Thumbs.db
 # graphify — локальный граф проекта (тяжёлый, генерится заново, не синкать между машинами)
 .graphify/
 memory/out/
+supabase/
