@@ -192,7 +192,7 @@
 - [kniga-ai-receptov.md](knowledge/kniga-ai-receptov.md) — «Книга ИИ-рецептов», бонус практикума «ИИшница» Ледовских (участвует Вячеслав), 20 промпт-рецептов по 7 разделам — заработок/сайт-бот/агенты/нейрозавод/автоматизация, referenced 27.08.2026
 - [scam-blacklist.md](knowledge/scam-blacklist.md) — чёрный список платформ (не давать деньги/API-ключи), 28.08.2026: cortx.net и куст скам-клонов cortextrade/kortextrades
 - [mail-digest.md](knowledge/mail-digest.md) — как проверить почту slavin68@mail.ru (только с этой Windows-машины, гео-блок mail.ru не пускает Fornex), рабочий рецепт через imaplib
-- [supabase-management-api.md](knowledge/supabase-management-api.md) — как заводить Supabase-проекты и катить SQL-миграции с этой машины: прямой TCP до Postgres заблокирован сетью РФ, рабочий обход — Management API поверх HTTPS (curl + personal access token)
+- [blocked-cli-network-workarounds.md](knowledge/blocked-cli-network-workarounds.md) — Supabase (`db push`) и Vercel CLI глохнут на этой сети (сырой TCP/TLS-фингерпринт режется), но прямой curl/fetch до тех же HTTPS API работает — рабочие рецепты деплоя через REST API вместо CLI
 
 ---
 

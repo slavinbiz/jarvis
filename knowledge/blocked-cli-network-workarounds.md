@@ -1,4 +1,8 @@
-# Supabase: как заводить проекты и катить миграции с этой Windows-машины
+# Заблокированные CLI-сети: Supabase/Vercel с этой Windows-машины
+
+Общий паттерн этой машины: некоторые сетевые пути CLI-инструментов (сырой TCP, специфичный TLS-фингерпринт бандла) режутся сетью РФ или DPI, а обычный `curl`/голый `fetch` до того же HTTPS API проходят нормально. Решение всегда одно — обходить проблемный CLI прямыми вызовами REST API. Ниже — конкретные рецепты.
+
+## Supabase: как заводить проекты и катить миграции
 
 Прямой TCP до Postgres (порт 5432 и 6543 — сессионный и транзакционный пулер) с этой машины **не проходит** — сеть РФ режет сырой TCP-трафик на нестандартные порты, даже через Hysteria2-туннель и IPv4-пулер. Из-за этого `supabase db push` (и любой psql-клиент) висит и таймаутит. HTTPS (443) через туннель при этом работает нормально.
 
@@ -21,6 +25,21 @@
    ```
    SQL-файл нельзя просто вставить в `-d` (переносы строк/кавычки ломают JSON) — собрать payload через маленький Node-скрипт (`fs.readFileSync` + `JSON.stringify({query: sql})`) в `Write`-файл в scratchpad, потом `curl --data-binary @payload.json`.
 4. **Node `-e` инлайн-скрипты с MSYS-путями (`/c/Users/...`) не работают** — Node на Windows не понимает git-bash-стиль путей, `/c/...` резолвится как `C:\c\...`. Писать пути только в виде `C:\\Users\\...` (двойной бэкслеш) или, надёжнее, класть скрипт отдельным `.js`-файлом через `Write` и запускать `node путь.js` — так не ловишь кавычки/эскейпинг bash поверх JS.
+
+## Тот же паттерн для Vercel: CLI глохнет, прямой fetch/curl — нет
+
+31.08.2026, тот же вечер: `npx vercel` (whoami/link/deploy) стабильно падает `TypeError: fetch failed`, сколько ни повторяй, с разными комбинациями `HTTPS_PROXY`/`NODE_OPTIONS=--use-env-proxy`. При этом обычный `curl` и голый `node -e "fetch(...)"` до `api.vercel.com` работают с первого раза. Похоже, дело не в проксировании, а в TLS-фингерпринте бандла Vercel CLI (undici), который режется тем же механизмом DPI, что и сырой TCP до Postgres — а не сам факт HTTPS.
+
+**Рабочий обход — задеплоить полностью через Vercel REST API, без CLI:**
+1. Personal access token: `vercel.com/account/tokens` → Create Token, SCOPE = **All Projects** в личном аккаунте (не в team, если явно не нужно) — иначе токен не сможет создать новый проект. Просить у Вячеслава каждый раз, не сохранять в файлы.
+2. Создать проект: `POST https://api.vercel.com/v11/projects` `{"name": "...", "framework": "nextjs"}`
+3. Прописать env-переменные ДО деплоя: `POST https://api.vercel.com/v10/projects/<id>/env` `{"key":..., "value":..., "type":"encrypted", "target":["production","preview","development"]}` — по одному вызову на переменную
+4. Собрать список файлов (`git ls-files`, уважает `.gitignore` — не тащит `node_modules`/`.next`/`.env*`), для каждого посчитать sha1 и залить `POST https://api.vercel.com/v2/files` с заголовками `Content-Length`, `x-vercel-digest: <sha1>`, тело — сырые байты файла
+5. Создать деплой: `POST https://api.vercel.com/v13/deployments` `{"name": "...", "project": "...", "target": "production", "files": [{"file": "...", "sha": "...", "size": ...}], "projectSettings": {"framework": "nextjs"}}`
+6. Опрашивать `GET https://api.vercel.com/v13/deployments/<id>` пока `readyState` не станет `READY`/`ERROR` — сборка идёт на стороне Vercel, занимает обычно ~30-40 сек
+7. Домен `<project-name>.vercel.app` аляится автоматически на последний READY production-деплой — читать из поля `alias` в ответе на шаге 6
+
+Рецепт полностью через Node `fetch` (без сторонних npm-пакетов), скрипт удобно писать в scratchpad и гонять `node script.js`.
 
 ## Другие грабли этого проекта (PlayfulPages, 31.08.2026)
 
