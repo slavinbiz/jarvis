@@ -6,6 +6,32 @@
 
 Возможный источник идей/инструментов для **перелива аудитории в @santex_s_ai** — короткие ИИ-мультики набирают охваты (у автора 40 млн просмотров/30 дней → 80к+ подписчиков на 2 аккаунта). Идея не проработана, просто держим пайплайн под рукой на случай если решим пробовать формат.
 
+## Статус
+
+**01.09.2026 — Вячеслав купил подписку Syntx.ai на месяц.** Тариф **ULTRA ELITE**, действует до 01.10.2026, 3000 токенов на счету. Авторизован через Telegram-бот, работает через веб-версию (сайт). Формат переходит из «держим на будущее» в активную попытку. Следующий шаг — пройти пайплайн от идеи до готового ролика (шаги 1-6 ниже), свой referral-код у Syntx завести отдельно от Камала (см. источник выше).
+
+**01.09.2026 (продолжение) — прошли шаг 4 (персонаж):** сделали полную развёртку персонажа-робота (разные ракурсы и эмоции на одном изображении, консистентный). Следующий шаг — анимация (шаг 5): грузим развёртку как референс в Kling/VO3/Seedance.
+
+## Первый проект: робот-мастер на кухне
+
+Персонаж: округлый бело-серо-голубой робот, джинсовый комбинезон, пояс с инструментами, экран на груди показывает эмоции. Стиль: flat 2D illustrated character animation.
+
+Готовый промпт для видео (15 сек, вертикальный, без диалогов):
+> 15-second vertical video, flat 2D illustrated character animation style, matching the attached character reference exactly (rounded blue-grey robot, denim overalls, tool belt, chest screen showing emotions). No dialogue. Robot approaches a leaking pipe in a bright kitchen, tries fixing it with a wrench (0-3s), leak worsens, robot panics — chest screen shows worried face, eyes wide with sweat drops (3-7s), holographic AI search icon appears above chest screen with a question mark (7-11s), robot applies a quirky AI-suggested fix (tape/gum), leak stops, chest screen switches to thumbs-up/smile, robot winks at camera (11-15s). Bright, warm lighting, cheerful comedic tone, camera slowly pushes in.
+
+Таймкоды: 0-3с — чинит трубу гаечным ключом; 3-7с — паника, экран груди показывает испуг с каплями пота; 7-11с — над грудью появляется голографическая иконка ИИ-поиска со знаком вопроса; 11-15с — чудаковатый фикс (скотч/жвачка), течь останавливается, экран груди — улыбка, робот подмигивает камере.
+
+Следующий шаг: загрузить развёртку робота как референс-картинку + этот промпт в Kling/VO3/Seedance.
+
+**Важно:** длительность в Kling на Syntx ограничена дропдауном (макс. ~10с), 15-сек промпт с полными таймкодами туда не влезает. Разбили сценарий на 2 генерации по ~7с, промпт под каждую часть — тоже укороченный (только те биты, что реально попадают в её длительность), не весь текст сразу.
+
+Промпт часть 1 (0-7с, длительность 7 сек):
+> 7-second vertical video, flat 2D illustrated character animation style, matching the attached character reference exactly (rounded blue-grey robot, denim overalls, tool belt, chest screen showing emotions). No dialogue. Robot approaches a leaking pipe in a bright kitchen, tries fixing it with a wrench (0-3s), leak worsens, robot panics — chest screen shows worried face, eyes wide with sweat drops (3-7s). Bright, warm lighting, cheerful comedic tone, camera slowly pushes in.
+
+Промпт часть 2 (7-15с) — составить по той же логике, только с оставшимися битами (голограмма ИИ-поиска, чудаковатый фикс, счастливый финал).
+
+Интерфейс Syntx — **реальное меню Telegram-бота** (проверено 01.09.2026, скриншот Вячеслава): Тренды, Текст, Изображения (не «Дизайн», как писали обзоры — здесь Nano Banana/Midjourney/Flux/Ideogram, сюда для развёртки персонажа), Видео (Sora/Seedance/Kling/Hailuo/Luma), Аудио (ElevenLabs/Suno), Школа SYNTX.AI, Помощь, База знаний. Оплата токенами, стоимость видна перед генерацией (картинка Flux ~0.3 токена, видео 6 сек ~5-50 токенов по модели). Видео: выбрать модель → формат кадра (9:16 под Reels/Shorts) → длительность 2-15 сек → режим «из текста» / «по референсу» (грузить развёртку персонажа Image 1/2...) → промпт → генерация.
+
 ## Пайплайн (6 шагов)
 
 1. **Поиск идеи** — 4 источника: тренд-каналы в Telegram, лента рекомендаций Instagram (лайкнуть ролик конкурента → алгоритм насыпет похожих), комментарии у конкурентов, личный опыт/истории. Разбор чужого залетевшего ролика: скачать через Instant Saver (Telegram-бот) → отдать GPT «проанализируй, сделай промпт такого же ролика для Seedance/VO3, но с другими персонажами». Не копировать 1-в-1 — менять персонажей/тональность/сеттинг.
