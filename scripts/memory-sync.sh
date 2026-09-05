@@ -8,14 +8,17 @@ cd "$WORKSPACE"
 
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S') $1" >> "$LOG"; }
 
-CHANGED=$(git status --porcelain MEMORY.md LEARNED.md memory/ knowledge/ 2>/dev/null)
+CHANGED=$(git status --porcelain 2>/dev/null)
 
 # Commit any local edits first (bot writes these files directly) — only then
 # pull --rebase, so rebase has something of ours to replay and never sees
 # "unstaged changes". Pulling replaced the old behaviour of pushing straight
 # from a stale base, which silently diverged from other sessions.
+# Использует `git add -A` (весь workspace, с учётом .gitignore), а не список
+# из 4 путей — раньше правки GOALS.md/.claude/ оставались unstaged и глушили
+# rebase молча на 2 недели (найдено 05.09.2026 через bugfixer).
 if [ -n "$CHANGED" ]; then
-  git add MEMORY.md LEARNED.md memory/ knowledge/
+  git add -A
   if ! git commit -m "[agent] memory: auto-sync $(date '+%Y-%m-%d %H:%M')" -q; then
     log "COMMIT FAILED"
     exit 1
