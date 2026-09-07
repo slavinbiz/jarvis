@@ -30,8 +30,15 @@ if ! git pull --rebase origin main -q 2>>"$LOG"; then
   exit 1
 fi
 
-# Nothing local and nothing new from remote — done.
+# Nothing local and nothing new from remote — done. Heartbeat once an hour so
+# a truly dead cron (vs. "ran fine, nothing to do") is distinguishable in the
+# log — раньше 2 дня тишины выглядели как сломанный синк, хотя обе стороны
+# просто коммитили сами в реальном времени (найдено 07.09.2026, false alarm).
 if [ -z "$CHANGED" ]; then
+  LAST_LINE=$(tail -1 "$LOG" 2>/dev/null)
+  if [[ "$LAST_LINE" != *"$(date '+%Y-%m-%d %H')"* ]]; then
+    log "checked, nothing to sync"
+  fi
   exit 0
 fi
 
