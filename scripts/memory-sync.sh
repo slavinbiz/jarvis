@@ -4,9 +4,35 @@ set -e
 
 WORKSPACE="/home/agent/workspace"
 LOG="/home/agent/workspace-sync.log"
+ALERT_SENT_MARKER="/home/agent/.sync-alert-sent"
+FAIL_THRESHOLD=4
 cd "$WORKSPACE"
 
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S') $1" >> "$LOG"; }
+
+# Алерт в Telegram напрямую владельцу, если синк падает подряд FAIL_THRESHOLD
+# раз (~1 час при 15-мин cron) — не ждём ежедневную проверку bugfixer, раньше
+# зависший rebase молчал 157 попыток подряд (~40 часов) до находки
+# (найдено 13.09.2026). Шлёт один раз за инцидент (маркер-файл), не спамит
+# каждые 15 мин, сбрасывается сам при следующем успешном синке.
+alert_if_stuck() {
+  local recent_fails
+  recent_fails=$(tail -"$FAIL_THRESHOLD" "$LOG" 2>/dev/null | grep -c "FAILED")
+  if [ "$recent_fails" -ge "$FAIL_THRESHOLD" ] && [ ! -f "$ALERT_SENT_MARKER" ]; then
+    local creds="/home/agent/projects/santex-poster/credentials.json"
+    if [ -f "$creds" ]; then
+      local token
+      token=$(python3 -c "import json; print(json.load(open('$creds'))['TELEGRAM_BOT_TOKEN'])" 2>/dev/null)
+      if [ -n "$token" ]; then
+        curl -s -X POST "https://api.telegram.org/bot${token}/sendMessage" \
+          -d chat_id=888224075 \
+          -d text="⚠️ Синк памяти Jarvis падает $FAIL_THRESHOLD+ раз подряд (~1 час). Похоже на реальный конфликт в git — нужна ручная проверка." \
+          > /dev/null 2>&1
+        touch "$ALERT_SENT_MARKER"
+      fi
+    fi
+  fi
+}
 
 CHANGED=$(git status --porcelain 2>/dev/null)
 
@@ -21,12 +47,14 @@ if [ -n "$CHANGED" ]; then
   git add -A
   if ! git commit -m "[agent] memory: auto-sync $(date '+%Y-%m-%d %H:%M')" -q; then
     log "COMMIT FAILED"
+    alert_if_stuck
     exit 1
   fi
 fi
 
 if ! git pull --rebase origin main -q 2>>"$LOG"; then
   log "PULL FAILED — memory may be out of sync, needs manual look"
+  alert_if_stuck
   exit 1
 fi
 
@@ -44,7 +72,9 @@ fi
 
 if ! git push origin main -q 2>>"$LOG"; then
   log "PUSH FAILED — commit made locally but NOT on GitHub, needs manual look"
+  alert_if_stuck
   exit 1
 fi
 
+rm -f "$ALERT_SENT_MARKER"
 log "synced ok"
